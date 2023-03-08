@@ -1,0 +1,42 @@
+This room is presuming we have initial access to the machine.
+
+Task1:
+ - We are first looking a for a password for the user Julia.Jones
+
+ 	I looked the the previous powershell history to see if it was created using a command, the command I ran:
+
+ 	type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+
+ 	from there I found that the user was created using powershell, and I got to see the password clearly. 
+
+ 	Password was: ZuperCkretPa5z
+
+
+ - for the second part I had to find the password of db_admins. I looked at the web.config file to see if the credentials were stored while configuring the server.
+ 	
+ 	Command: type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+
+ 	Results: I found the user thm-db with password: 098n0x35skjD3
+
+ - the third part asked to find the flag on of the user's desktop. I tried running: 
+ 	cmdkey.list
+
+ 	and I found that the user mike.katz had a saved password ( a big no no)
+ 	this saved password was used to access the computer so simply I ran cmd.exe using the saved credentils.
+
+ 	command: runas /savecred /user:mike.katz cmd.exe
+
+ 	the flag was easly retrieved when I cd'd into his desktop. 
+
+ - the next step was to find a password saved from a putty session.
+
+ 	looking into the registry I found that there was a session to "my ssh server".
+ 	looking uder there I found that the password was saved on putty for easier access, but it was saved in plain text so I easily retreived it from there.
+
+ 	password: Coolpass2021
+
+
+
+
+
+
